@@ -1,5 +1,7 @@
-import { motion } from 'framer-motion';
-import { Clock, MapPin, Trash2 } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { CalendarCheck, Clock, MapPin, Trash2 } from 'lucide-react';
+import PageTransition from '../components/ui/PageTransition';
+import EmptyState from '../components/ui/EmptyState';
 import { useBookingStore } from '../store/bookingStore';
 import { useToast } from '../components/ui/Toast';
 import { useConfirm } from '../components/ui/ConfirmDialog';
@@ -18,9 +20,9 @@ export default function MyBookingsPage() {
   };
 
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl mx-auto">
+    <PageTransition className="max-w-3xl mx-auto">
       <h1 className="text-xl font-bold text-white mb-6">マイ予約</h1>
-      {myBookings.length === 0 ? <p className="text-zinc-500 text-center py-12">予約がありません</p> : (
+      {myBookings.length === 0 ? <EmptyState icon={CalendarCheck} title="予約がありません" description="会議室を予約してみましょう" action={<Link to="/" className="inline-flex items-center gap-2 px-4 py-2 bg-accent-600 hover:bg-accent-500 text-white text-sm font-medium rounded-lg transition-colors">予約する</Link>} /> : (
         <div className="space-y-2">
           {myBookings.map((b) => {
             const room = rooms.find((r) => r.id === b.roomId);
@@ -40,6 +42,6 @@ export default function MyBookingsPage() {
           })}
         </div>
       )}
-    </motion.div>
+    </PageTransition>
   );
 }

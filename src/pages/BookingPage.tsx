@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { motion } from 'framer-motion';
 import { Clock, Users } from 'lucide-react';
+import PageTransition from '../components/ui/PageTransition';
 import { useBookingStore } from '../store/bookingStore';
 import { useToast } from '../components/ui/Toast';
 
@@ -28,7 +28,7 @@ export default function BookingPage() {
   };
 
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-5xl mx-auto space-y-6">
+    <PageTransition className="max-w-5xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
         <h1 className="text-xl font-bold text-white">会議室予約</h1>
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)}
@@ -90,6 +90,6 @@ export default function BookingPage() {
         </div>
         <button type="submit" className="bg-accent-600 hover:bg-accent-500 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors">予約する</button>
       </form>
-    </motion.div>
+    </PageTransition>
   );
 }

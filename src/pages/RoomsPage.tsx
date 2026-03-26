@@ -1,11 +1,11 @@
-import { motion } from 'framer-motion';
 import { Users, Monitor } from 'lucide-react';
+import PageTransition from '../components/ui/PageTransition';
 import { useBookingStore } from '../store/bookingStore';
 
 export default function RoomsPage() {
   const { rooms } = useBookingStore();
   return (
-    <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl mx-auto">
+    <PageTransition className="max-w-3xl mx-auto">
       <h1 className="text-xl font-bold text-white mb-6">会議室一覧</h1>
       <div className="grid grid-cols-2 gap-4">
         {rooms.map((room) => (
@@ -25,6 +25,6 @@ export default function RoomsPage() {
           </div>
         ))}
       </div>
-    </motion.div>
+    </PageTransition>
   );
 }
