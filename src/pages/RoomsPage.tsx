@@ -6,11 +6,11 @@ export default function RoomsPage() {
   const { rooms } = useBookingStore();
   return (
     <PageTransition className="max-w-3xl mx-auto">
-      <h1 className="text-xl font-bold text-white mb-6">会議室一覧</h1>
+      <h1 className="text-xl font-bold text-foreground mb-6">会議室一覧</h1>
       <div className="grid grid-cols-2 gap-4">
         {rooms.map((room) => (
           <div key={room.id} className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-5">
-            <h3 className="text-sm font-semibold text-white mb-2">{room.name}</h3>
+            <h3 className="text-sm font-semibold text-foreground mb-2">{room.name}</h3>
             <div className="flex items-center gap-3 text-xs text-zinc-500 mb-3">
               <span>{room.floor}</span>
               <span className="flex items-center gap-1"><Users className="w-3 h-3" />{room.capacity}名</span>

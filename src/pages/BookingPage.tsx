@@ -30,9 +30,9 @@ export default function BookingPage() {
   return (
     <PageTransition className="max-w-5xl mx-auto space-y-6">
       <div className="flex items-center justify-between">
-        <h1 className="text-xl font-bold text-white">会議室予約</h1>
+        <h1 className="text-xl font-bold text-foreground">会議室予約</h1>
         <input type="date" value={date} onChange={(e) => setDate(e.target.value)}
-          className="bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white" />
+          className="bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-foreground" />
       </div>
       <div className="bg-zinc-900/50 border border-zinc-800 rounded-xl overflow-hidden">
         <div className="grid grid-cols-[120px_1fr] divide-x divide-zinc-800">
@@ -48,7 +48,7 @@ export default function BookingPage() {
           return (
             <div key={room.id} className="grid grid-cols-[120px_1fr] divide-x divide-zinc-800 border-t border-zinc-800/50">
               <div className="p-3">
-                <p className="text-xs font-medium text-white">{room.name}</p>
+                <p className="text-xs font-medium text-foreground">{room.name}</p>
                 <p className="text-[10px] text-zinc-500 flex items-center gap-1"><Users className="w-2.5 h-2.5" />{room.capacity}名</p>
               </div>
               <div className="relative h-12">
@@ -68,27 +68,27 @@ export default function BookingPage() {
         })}
       </div>
       <form onSubmit={handleSubmit} className="bg-zinc-900/50 border border-zinc-800 rounded-xl p-6 space-y-4">
-        <h2 className="text-sm font-semibold text-white">新規予約</h2>
+        <h2 className="text-sm font-semibold text-foreground">新規予約</h2>
         <div className="grid grid-cols-2 gap-4">
-          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="会議名" required className="bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-accent-500/50" />
-          <select value={selectedRoom} onChange={(e) => setSelectedRoom(e.target.value)} required className="bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2.5 text-sm text-white">
+          <input value={title} onChange={(e) => setTitle(e.target.value)} placeholder="会議名" required className="bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2.5 text-sm text-foreground placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-accent-500/50" />
+          <select value={selectedRoom} onChange={(e) => setSelectedRoom(e.target.value)} required className="bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2.5 text-sm text-foreground">
             <option value="">会議室を選択</option>
             {rooms.map((r) => <option key={r.id} value={r.id}>{r.name} ({r.capacity}名)</option>)}
           </select>
         </div>
         <div className="grid grid-cols-3 gap-4">
           <div><label className="text-xs text-zinc-500 block mb-1">開始</label>
-            <select value={startTime} onChange={(e) => setStartTime(e.target.value)} className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2.5 text-sm text-white">
+            <select value={startTime} onChange={(e) => setStartTime(e.target.value)} className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2.5 text-sm text-foreground">
               {HOURS.map((h) => <option key={h} value={h}>{h}</option>)}
             </select></div>
           <div><label className="text-xs text-zinc-500 block mb-1">終了</label>
-            <select value={endTime} onChange={(e) => setEndTime(e.target.value)} className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2.5 text-sm text-white">
+            <select value={endTime} onChange={(e) => setEndTime(e.target.value)} className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2.5 text-sm text-foreground">
               {HOURS.map((h) => <option key={h} value={h}>{h}</option>)}
             </select></div>
           <div><label className="text-xs text-zinc-500 block mb-1">参加人数</label>
-            <input value={attendees} onChange={(e) => setAttendees(Number(e.target.value))} type="number" min="1" className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2.5 text-sm text-white" /></div>
+            <input value={attendees} onChange={(e) => setAttendees(Number(e.target.value))} type="number" min="1" className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2.5 text-sm text-foreground" /></div>
         </div>
-        <button type="submit" className="bg-accent-600 hover:bg-accent-500 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors">予約する</button>
+        <button type="submit" className="bg-accent-600 hover:bg-accent-500 text-on-accent px-6 py-2.5 rounded-lg text-sm font-medium transition-colors">予約する</button>
       </form>
     </PageTransition>
   );
