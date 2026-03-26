@@ -1,10 +1,21 @@
 import { motion } from 'framer-motion';
 import { Clock, MapPin, Trash2 } from 'lucide-react';
 import { useBookingStore } from '../store/bookingStore';
+import { useToast } from '../components/ui/Toast';
+import { useConfirm } from '../components/ui/ConfirmDialog';
 
 export default function MyBookingsPage() {
   const { bookings, rooms, deleteBooking } = useBookingStore();
+  const { showToast } = useToast();
+  const { confirm } = useConfirm();
   const myBookings = bookings.filter((b) => b.organizer === '自分').sort((a, b) => a.date.localeCompare(b.date));
+
+  const handleDelete = async (id: string) => {
+    const ok = await confirm({ title: '予約を取消', message: 'この予約を取り消してもよろしいですか？', confirmLabel: '削除', variant: 'danger' });
+    if (!ok) return;
+    deleteBooking(id);
+    showToast('予約を取り消しました', 'success');
+  };
 
   return (
     <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="max-w-3xl mx-auto">
@@ -23,7 +34,7 @@ export default function MyBookingsPage() {
                     <span className="flex items-center gap-1"><MapPin className="w-3 h-3" />{room?.name}</span>
                   </div>
                 </div>
-                <button onClick={() => deleteBooking(b.id)} className="opacity-0 group-hover:opacity-100 text-zinc-500 hover:text-red-400"><Trash2 className="w-4 h-4" /></button>
+                <button onClick={() => handleDelete(b.id)} className="opacity-0 group-hover:opacity-100 text-zinc-500 hover:text-red-400"><Trash2 className="w-4 h-4" /></button>
               </div>
             );
           })}

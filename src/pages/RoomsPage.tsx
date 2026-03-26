@@ -17,7 +17,7 @@ export default function RoomsPage() {
             </div>
             <div className="flex flex-wrap gap-1.5">
               {room.equipment.map((eq) => (
-                <span key={eq} className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-purple-500/10 text-purple-400">
+                <span key={eq} className="flex items-center gap-1 text-[10px] px-2 py-0.5 rounded-full bg-accent-500/10 text-accent-400">
                   <Monitor className="w-2.5 h-2.5" />{eq}
                 </span>
               ))}

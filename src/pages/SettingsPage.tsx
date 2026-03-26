@@ -11,7 +11,7 @@ export default function SettingsPage() {
         <div><label className="text-xs text-zinc-500 block mb-1">リマインダー（分前）</label>
           <input defaultValue="10" type="number" className="w-full bg-zinc-800 border border-zinc-700 rounded-lg px-3 py-2 text-sm text-white" /></div>
       </div>
-      <button className="bg-purple-600 hover:bg-purple-500 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors">保存する</button>
+      <button className="bg-accent-600 hover:bg-accent-500 text-white px-6 py-2.5 rounded-lg text-sm font-medium transition-colors">保存する</button>
     </motion.div>
   );
 }
